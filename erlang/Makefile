@@ -14,8 +14,16 @@ all:
 	cd rabbitmq-erlang-client && make
 	rm -rf rabbitmq-codegen rabbitmq-server
 	ln -s rabbitmq-erlang-client/deps/rabbit_common-0.0.0 rabbit_common
+	wget https://github.com/talentdeficit/jsx/archive/v1.4.3.tar.gz
+	tar -zxvf v1.4.3.tar.gz
+	mv jsx-1.4.3 jsx
+	cd jsx && rebar compile
+	rm v1.4.3.tar.gz
+
 
 clean:
 	rm rabbit_common
 	rm -rf rabbitmq-erlang-client
 	rm -f rabbitmq_v3_1_5.tar.gz
+	rm -rf jsx
+	rm -f v1.4.3.tar.gz
